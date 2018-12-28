@@ -1,26 +1,5 @@
-cmake_minimum_required(VERSION 3.1)
 
-project(WARCABY)
 
-set (CMAKE_CXX_STANDARD 11)
+add_library(ge Shader.cpp errors.cpp Graph.cpp Renderable.cpp Quad.cpp QuadField.cpp Texture.cpp Timer.cpp Window.cpp InputManager.cpp Button.cpp TexturedQuad.cpp ResourceManager.cpp RandomString.cpp )
 
-include_directories ("${PROJECT_SOURCE_DIR}/src")
-include_directories ("${PROJECT_SOURCE_DIR}/src/include")
-include_directories ("${PROJECT_SOURCE_DIR}/src/lib/glfw/include")
-include_directories ("${PROJECT_SOURCE_DIR}/src/lib/glm")
-include_directories ("${PROJECT_SOURCE_DIR}/src/lib/stb")
-set( CMAKE_RUNTIME_OUTPUT_DIRECTORY  ${PROJECT_SOURCE_DIR}/build )
 
-add_subdirectory (src/ge) 
-add_subdirectory (src/network) 
-add_subdirectory (src/lib/glfw)
-add_subdirectory (src/lib/glad)
-add_subdirectory (src/lib/stb)
-
-set(GLFW_BUILD_DOCS OFF CACHE INTERNAL "" FORCE)
-set(GLFW_BUILD_TESTS OFF CACHE INTERNAL "" FORCE)
-set(GLFW_BUILD_EXAMPLES OFF CACHE INTERNAL "" FORCE)
-
-add_executable (Warcaby src/Game.cpp src/main.cpp)
-
-target_link_libraries (Warcaby ge network glfw glad stb)
